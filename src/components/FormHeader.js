@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export default function Header({
+export default function FormHeader({
     heading,
     paragraph,
     linkName,
@@ -19,7 +19,7 @@ export default function Header({
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600 mt-5">
             {paragraph} {' '}
-            <Link to={linkUrl} className="font-medium text-purple-600 hover:text-purple-500">
+            <Link to={linkUrl} className="font-medium text-emerald-600 hover:text-emerald-500">
                 {linkName}
             </Link>
             </p>

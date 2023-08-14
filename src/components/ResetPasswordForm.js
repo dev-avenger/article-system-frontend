@@ -1,27 +1,26 @@
 import { useState } from 'react';
-import loginFields from "../constants/loginFields";
+import resetPasswordFields from "../constants/resetPasswordFields";
 import Button from "./Button";
 import Input from "./Input";
-import LoginFormMsc from './LoginFormMsc';
 
-const fields=loginFields;
+const fields=resetPasswordFields;
 let fieldsState = {};
 fields.forEach(field=>fieldsState[field.id]='');
 
-export default function LoginForm(){
-    const [loginState,setLoginState]=useState(fieldsState);
+export default function ResetPasswordForm(){
+    const [resetPasswordState,setResetPasswordState]=useState(fieldsState);
 
     const handleChange=(e)=>{
-        setLoginState({...loginState,[e.target.id]:e.target.value})
+        setResetPasswordState({...resetPasswordState,[e.target.id]:e.target.value})
     }
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        authenticateUser();
+        resetPassword();
     }
 
     //Handle Login API Integration here
-    const authenticateUser = () =>{
+    const resetPassword = () =>{
 
     }
 
@@ -33,7 +32,7 @@ export default function LoginForm(){
                         <Input
                             key={field.id}
                             handleChange={handleChange}
-                            value={loginState[field.id]}
+                            value={resetPasswordState[field.id]}
                             labelText={field.labelText}
                             labelFor={field.labelFor}
                             id={field.id}
@@ -46,9 +45,7 @@ export default function LoginForm(){
                 )
             }
         </div>
-
-        <LoginFormMsc/>
-        <Button handleSubmit={handleSubmit} text="Login"/>
+        <Button handleSubmit={handleSubmit} text="Reset Password"/>
 
       </form>
     )

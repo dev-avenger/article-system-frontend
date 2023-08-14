@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import  signupFields  from "../constants/signupFields"
-import FormAction from "./FormAction";
+import Button from "./Button";
 import Input from "./Input";
 
 const fields=signupFields;
@@ -44,7 +44,7 @@ export default function Signup(){
                 
                 )
             }
-          <FormAction handleSubmit={handleSubmit} text="Signup" />
+          <Button handleSubmit={handleSubmit} text="Signup" />
         </div>
 
          
