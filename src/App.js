@@ -9,6 +9,7 @@ import LoginPage from './pages/Login';
 import ForgotPasswordPage from './pages/ForgotPassword';
 import ResetPasswordPage from './pages/ResetPassword';
 import ProfilePage from './pages/Profile';
+import ArticlePage from './pages/Article';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
             <Route path="/reset-password" element={<ResetPasswordPage/>} />
             <Route path="/profile" element={<ProfilePage/>} />
+            <Route path="/articles" element={<ArticlePage/>} />
         </Routes>
       </BrowserRouter>
     </div>
