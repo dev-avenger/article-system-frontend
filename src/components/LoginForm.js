@@ -26,8 +26,8 @@ export default function LoginForm(){
     }
 
     return(
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <div className="-space-y-px">
+        <form className="mt-8 lg:mx-80 md:mx-60 sm:mx-20 text-white" onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center justify-between">
             {
                 fields.map(field=>
                         <Input
@@ -41,15 +41,16 @@ export default function LoginForm(){
                             type={field.type}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
+                            groupClass={'w-full flex flex-col'}
                     />
                 
                 )
             }
-        </div>
-
+        <div className='flex flex-col items-center justify-center w-full'>
         <LoginFormMsc/>
-        <Button handleSubmit={handleSubmit} text="Login"/>
-
+        <Button handleSubmit={handleSubmit} text="Login" customClass={ 'w-2/4 my-4'}/>
+        </div>
+        </div>
       </form>
     )
 }

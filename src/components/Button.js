@@ -1,13 +1,15 @@
 export default function Button({
     handleSubmit,
     action='submit',
-    text
+    text,
+    customClass
 }){
+    const fixedInputClass="text-white bg-blue-500 leading-5 py-2 px-3 rounded-md font-semibold text-sm hover:bg-opacity-90 hover:border-0 ";
     return(
         <>
             <button
                 type={action}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 mt-10"
+                className={fixedInputClass+customClass}
                 onSubmit={handleSubmit}
             >
                 {text}

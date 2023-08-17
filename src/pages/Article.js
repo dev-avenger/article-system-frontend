@@ -1,7 +1,17 @@
+import Filter from "../components/Filter";
+import filterFields from "../constants/filterFields";
+const fields=filterFields;
+let fieldsState = {};
+fields.forEach(field=>fieldsState[field.id]='');
+
 export default function ArticlePage() {
     const marginXNegative = {
         marginLeft: "-0.5rem",
         marginRight: "-0.5rem",
+    };
+    const margin1XNegative = {
+        marginLeft: "-1.5rem",
+        marginRight: "-1.5rem",
     };
     const profileText ={
         position: "absolute",
@@ -16,9 +26,9 @@ export default function ArticlePage() {
     }
     return (
         <>
-            <div className="opacity-100	bg-emerald-50 overflow-y-auto">
+            <div className="opacity-100	bg-gray-900 overflow-y-auto">
                 <div>
-                <div className="flex flex-col fixed inset-y-0 left-0 z-0 bg-indigo-100 w-72">
+                <div className="hidden md:flex flex-col fixed inset-y-0 left-0 z-0 bg-indigo-100 w-72">
                     <div className="flex flex-col grow gap-8 px-6 ring-offset-current ring-current">
                         <div className="flex h-16 shrink-0 items-center">
                             <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company"/>
@@ -70,9 +80,9 @@ export default function ArticlePage() {
                         </nav>
                     </div>
                 </div>
-                <div className="pl-72">
+                <div className="md:pl-72">
                     <div className="flex items-center h-16 px-8 border-b z-40 gap-x-6 sticky top-0">
-                        <button type="button" className="p-2.5 cursor-pointer bg-none bg-transparent normal-case" style={{margin: '-0.625rem'}}>
+                        <button type="button" className="md:hidden flex p-2.5 cursor-pointer bg-none bg-transparent normal-case" style={{margin: '-0.625rem'}}>
                             <span style={profileText}>Open sidebar</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
                                 <path fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd">
@@ -86,7 +96,7 @@ export default function ArticlePage() {
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="absolute pointer-events-none inset-y-0 left-0	h-full w-5">
                                         <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
                                     </svg>
-                                    <input id="search-field" className="block text-sm leading-5 h-full w-full border-0 bg-transparent py-0 pr-0 pl-8" style={{outlineOffset: "-2px"}} placeholder="Search..." type="search" name="search"/>
+                                    <input id="search-field" className="block outline-none text-sm leading-5 h-full w-full border-0 bg-transparent py-0 pr-0 pl-8" style={{outlineOffset: "-2px"}} placeholder="Search..." type="search" name="search"/>
                                 </div>
                             </form>
                         </div>
@@ -100,12 +110,12 @@ export default function ArticlePage() {
                             </nav>
                         </header>
                         <div>
-                            <div className="grid grid-cols-3 max-w-7xl gap-x-8 gap-y-10 py-16">
-                                <div className="col-span-2">
-                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl">
+                            <div className="grid sm:grid-cols md:grid-cols-2 lg:grid-cols-3 max-w-7xl md:gap-x-8 md:gap-y-10 py-16">
+                                <div className="col-span-2" style={{marginLeft:"0.5rem",marginRight:"0.5rem"}}>
+                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl sm:my-2">
                                         <div className="flex items-center col-span-full gap-x-8">
                                             <div className="max-w-sm w-full lg:max-w-full lg:flex">
-                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('/img/card-left.jpg')"}} title="Woman holding a mug">
+                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vtgN8PhLMBHdJ1K0LoimzlknlzxkeOixUsrzv6xfp1c04J50OQ4c7fUxWjt5OUvf0FY&usqp=CAU')"}} title="Woman holding a mug">
                                         </div>
                                         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                             <div className="mb-8">
@@ -129,10 +139,10 @@ export default function ArticlePage() {
                                         </div>
                                         </div>
                                     </div>
-                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl">
+                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl my-2">
                                         <div className="flex items-center col-span-full gap-x-8">
                                             <div className="max-w-sm w-full lg:max-w-full lg:flex">
-                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('/img/card-left.jpg')"}} title="Woman holding a mug">
+                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vtgN8PhLMBHdJ1K0LoimzlknlzxkeOixUsrzv6xfp1c04J50OQ4c7fUxWjt5OUvf0FY&usqp=CAU')"}} title="Woman holding a mug">
                                         </div>
                                         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                             <div className="mb-8">
@@ -156,10 +166,10 @@ export default function ArticlePage() {
                                         </div>
                                         </div>
                                     </div>
-                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl">
+                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl my-2">
                                         <div className="flex items-center col-span-full gap-x-8">
                                             <div className="max-w-sm w-full lg:max-w-full lg:flex">
-                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('/img/card-left.jpg')"}} title="Woman holding a mug">
+                                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vtgN8PhLMBHdJ1K0LoimzlknlzxkeOixUsrzv6xfp1c04J50OQ4c7fUxWjt5OUvf0FY&usqp=CAU')"}} title="Woman holding a mug">
                                         </div>
                                         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                             <div className="mb-8">
@@ -185,15 +195,75 @@ export default function ArticlePage() {
                                     </div>
                                 </div>
                                 <div>
-                                    <h2 className="text-sm text-base leading-7">Personal Information</h2>
-                                    <p className="text-sm leading-6 mt-1">Use a permanent address where you can receive mail.</p>
+                                <form className="hidden lg:block">
+                                    <h3 className="sr-only">Categories</h3>
+                                    {
+                                        fields.map(filterField => {
+                                            <Filter categoryName={filterField.categoryName} listofSubCategories={filterFields.listofSubCategories}/>
+                                        })
+                                    }
+                                
+                                </form>
                                 </div>
                             </div>
                         </div>
                     </main>
                 </div>
                 </div>
-            </div> 
+            </div>
+            <div id="headlessui-portal-root"><div data-headlessui-portal="" style={{display:"none"}}>
+                <button type="button" data-headlessui-focus-guard="true" aria-hidden="true" style={profileText}>
+                </button>
+                <div>
+                    <div className="relative z-50" id="headlessui-dialog-3" role="dialog" aria-modal="true" data-headlessui-state="open">
+                        <div className="fixed inset-0 bg-indigo-500 opacity-100"></div>
+                        <div className="fixed flex inset-0">
+                            <div className="relative mr-16 flex flex-1 w-full max-w-xs" id="headlessui-dialog-panel-4" data-headlessui-state="open">
+                                <div className="absolute left-full top-0 flex w-16 justify-center pt-5 opacity-100">
+                                    <button type="button" className="p-2.5 cursor-pointer normal-case" style={{margin: '-0.625rem'}}>
+                                        <span style={profileText}>Close sidebar</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="block align-middle h-6 w-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                    </button>
+                                </div>
+                                <div className="flex flex-1 flex-col overflow-y gap-y-5 px-6 bg-indifo-500">
+                                    <div className="flex items-center shrink-0 h-16">
+                                        <img className="h-8 w-auto max-w-full" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company"/>
+                                    </div>
+                                    <nav className="flex flex-1 flex-col">
+                                        <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                                            <li>
+                                                <ul role="list" className="p-0 m-0 list-none" style={marginXNegative}>
+                                                    <li>
+                                                        <a href="#" className="flex no-underline gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="h-6 w-6 shrink-0 block align-middle">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"></path>
+                                                        </svg>
+                                                            Projects
+                                                        </a>
+                                                    </li>
+ 
+                                                </ul>
+                                            </li>
+                                            <li className="mt-auto" style={margin1XNegative}>
+                                            <a className="flex items-center leading-6 font-semibold text-sm py-3 px-6 gap-x-4 no-underline opacity-100">
+                                                <img className="w-8	h-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"/>
+                                                <span style={profileText}>Your profile</span>
+                                                <span>Tom Cook</span>  
+                                            </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" data-headlessui-focus-guard="true" aria-hidden="true" style={profileText}>
+                </button>
+            </div>
+        </div>
         </>
     )
 }

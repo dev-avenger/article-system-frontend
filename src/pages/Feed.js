@@ -1,4 +1,10 @@
-export default function ProfilePage() {
+import Filter from "../components/Filter";
+import filterFields from "../constants/filterFields";
+const fields=filterFields;
+let fieldsState = {};
+fields.forEach(field=>fieldsState[field.id]='');
+
+export default function FeedPage() {
     const marginXNegative = {
         marginLeft: "-0.5rem",
         marginRight: "-0.5rem",
@@ -16,9 +22,9 @@ export default function ProfilePage() {
     }
     return (
         <>
-            <div className="opacity-100	bg-gray-900 overflow-y-auto text-white">
+            <div className="opacity-100	bg-emerald-50 overflow-y-auto">
                 <div>
-                <div className="flex flex-col fixed inset-y-0 left-0 z-0 bg-indigo-100 w-72">
+                <div className="hidden md:flex flex-col fixed inset-y-0 left-0 z-0 bg-indigo-100 w-72">
                     <div className="flex flex-col grow gap-8 px-6 ring-offset-current ring-current">
                         <div className="flex h-16 shrink-0 items-center">
                             <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company"/>
@@ -72,7 +78,24 @@ export default function ProfilePage() {
                 </div>
                 <div className="pl-72">
                     <div className="flex items-center h-16 px-8 border-b z-40 gap-x-6 sticky top-0">
-
+                        <button type="button" className="p-2.5 cursor-pointer bg-none bg-transparent normal-case" style={{margin: '-0.625rem'}}>
+                            <span style={profileText}>Open sidebar</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
+                                <path fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd">
+                                </path>
+                            </svg>
+                        </button>
+                        <div className="flex flex-1 self-stretch gap-x-6">
+                            <form className="flex flex-1" action="#" method="GET">
+                                <label for="search-field" style={profileText}>Search</label>
+                                <div className="relative w-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="absolute pointer-events-none inset-y-0 left-0	h-full w-5">
+                                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <input id="search-field" className="block outline-none text-sm leading-5 h-full w-full border-0 bg-transparent py-0 pr-0 pl-8" style={{outlineOffset: "-2px"}} placeholder="Search..." type="search" name="search"/>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <main>
                         <header className="border-b">
@@ -84,48 +107,50 @@ export default function ProfilePage() {
                         </header>
                         <div>
                             <div className="grid grid-cols-3 max-w-7xl gap-x-8 gap-y-10 py-16">
-                                <div>
-                                    <h2 class="text-sm text-base leading-7">Personal Information</h2>
-                                    <p class="text-sm leading-6 mt-1">Use a permanent address where you can receive mail.</p>
+                                <div className="col-span-1">
+                                <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm">
+    <a href="#">
+        <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt=""/>
+    </a>
+    <div className="p-5">
+        <a href="#">
+            <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p className="font-normal text-gray-700 mb-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+            Read more
+        </a>
+    </div>
+</div>
                                 </div>
-                                <form className="col-span-2">
-                                    <div className="grid grid-cols-6 gap-y-8 gap-x-6 max-w-xl">
-                                        <div className="flex items-center col-span-full gap-x-8">
-                                            <img className="flex-none w-24 h-24 max-w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"/>
-                                            <div>
-                                                <button type="button" class="rounded-md text-sm leading-5 font-semibold normal-case py-2 px-3 text-white bg-slate-500 cursor-pointer">Change avatar</button>
-                                                <p class="leading-5 text-xs mt-2">JPG, GIF or PNG. 1MB max.</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-span-3">
-                                            <label for="first-name" className="block leading-6 font-medium text-sm">First name</label>
-                                            <div className="mt-2">
-                                                <input type="text" name="first-name" id="first-name" autocomplete="given-name" className="w-full block outline-none rounded-md border-0 py-1.5 ring-inset text-sm leading-6 ring-white focus:border-blue-500 focus:border-2 focus:border-solid bg-white-900 bg-opacity-5"/>
-                                            </div>
-                                        </div>
-                                        <div className="col-span-3">
-                                            <label for="last-name" className="block leading-6 font-medium text-sm">Last name</label>
-                                            <div className="mt-2 box-border">
-                                                <input type="text" name="last-name" id="first-name" autocomplete="given-name" className="w-full block rounded-md border-2 border-transparent bg-white py-2 ring-inset text-sm leading-6 ring-white bg-white-900 bg-opacity-5 outline-0 px-2 focus:border-blue-500 focus:border-2 focus:border-solid"/>
-                                            </div>
-                                        </div>
-                                        <div className="col-span-full">
-                                            <label for="email" className="block leading-6 font-medium text-sm">Email</label>
-                                            <div className="mt-2">
-                                                <input type="text" name="email" id="first-name" autocomplete="given-name" className="w-full focus:border-emerald-600 block rounded-md border-0 bg-white py-1.5 ring-inset text-sm leading-6 ring-white"/>
-                                            </div>
-                                        </div>
-                                        <div className="col-span-full">
-                                            <label for="username" className="block leading-6 font-medium text-sm">Username</label>
-                                            <div className="mt-2">
-                                                <input type="text" name="username" id="username" autocomplete="given-name" className="w-full focus:border-emerald-600 block rounded-md border-0 bg-white py-1.5 ring-inset text-sm leading-6 ring-white"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex mt-8">
-                                        <button type="submit" class="text-white bg-slate-500 leading-5 py-2 px-3 rounded-md font-semibold text-sm">Save</button>
-                                    </div>
-                                </form>
+                                <div className="col-span-1">
+                                <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm">
+    <a href="#">
+        <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt=""/>
+    </a>
+    <div className="p-5">
+        <a href="#">
+            <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p className="font-normal text-gray-700 mb-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+            Read more
+        </a>
+    </div>
+</div>
+                                </div>
+                                <div>
+                                <form className="hidden lg:block">
+              <h3 className="sr-only">Categories</h3>
+
+                {
+                                    fields.map(filterField => {
+                                        <Filter categoryName={filterField.categoryName} listofSubCategories={filterFields.listofSubCategories}/>
+                                    })
+                }
+              
+            </form>
+                                </div>
                             </div>
                         </div>
                     </main>
@@ -133,5 +158,5 @@ export default function ProfilePage() {
                 </div>
             </div> 
         </>
-    )
+        )
 }

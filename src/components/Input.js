@@ -1,4 +1,3 @@
-const fixedInputClass="rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm"
 
 export default function Input({
     handleChange,
@@ -10,23 +9,24 @@ export default function Input({
     type,
     isRequired=false,
     placeholder,
-    customClass
+    customClass,
+    groupClass,
 }){
+  const fixedInputClass = 'w-full block rounded-md border-2 border-transparent bg-white py-2 ring-inset text-sm leading-6 my-4 ring-white bg-white-900 bg-opacity-5 outline-0 px-2 focus:border-blue-500 focus:border-2 focus:border-solid ';
+  const fixedgroupClass = 'col-span-3';  
     return(
-        <div className="my-5">
-            <label htmlFor={labelFor} className="sr-only">
-              {labelText}
-            </label>
-            <input
-              onChange={handleChange}
-              value={value}
-              id={id}
-              name={name}
-              type={type}
-              required={isRequired}
-              className={fixedInputClass+customClass}
-              placeholder={placeholder}
-            />
-          </div>
+      <div className={groupClass? groupClass : fixedgroupClass}>
+      <label htmlFor={labelFor} className="block leading-6 font-medium text-sm">{labelText}</label>
+          <input
+             onChange={handleChange}
+             value={value}
+             id={id}
+             name={name}
+             type={type}
+             required={isRequired}
+             className={fixedInputClass+customClass}
+             placeholder={placeholder}
+           />
+      </div>
     )
 }
